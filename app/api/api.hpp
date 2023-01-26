@@ -1,5 +1,7 @@
-#ifndef SHOP_HPP_
-#define SHOP_HPP_
+#pragma once
+
+#include "shop/shop.hpp"
+#include "shop/products/bakers.hpp"
 
 #include <memory>
 
@@ -16,4 +18,12 @@ private:
     static std::shared_ptr<Session> instance_;
 };
 
-#endif // SHOP_HPP_
+std::shared_ptr<Session> Session::instance_ = nullptr;
+
+std::shared_ptr<Session> Session::getInstance() {
+    if(instance_== nullptr) {
+        instance_ = std::shared_ptr<Session>(new Session());
+    }
+    return instance_;
+}
+
