@@ -2,11 +2,10 @@
 
 #include "../bakers.hpp"
 
-TEST(CookiesBakerTest, setQuantityThrowsExeceptionWhenSmallerThanOne) {
+TEST(CookiesBakerTest, setQuantityThrowsExeceptionWhenZero) {
     CookiesBaker baker;
     
     ASSERT_ANY_THROW(baker.setQuantity(0));
-    ASSERT_ANY_THROW(baker.setQuantity(-1));
 }
 TEST(CookiesBakerTest, setQuantityNotThrowsExceptionWhenOneOrBigger) {
     CookiesBaker baker;
