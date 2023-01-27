@@ -5,27 +5,33 @@
 
 class BakersManager {
 public:
-    void setBaker(std::shared_ptr<Baker> baker);
+    void setBaker(std::shared_ptr<Baker> baker) {
+        baker_ = baker;
+    }
 
-    // no ingredients
-    void makePlainCookies(size_t quantity);
-    void makeChocoleteCookies(size_t quantity);
-    void makeHazelnutsCookies(size_t quantity);
-    void makeChocoleteAndHazelnutsCookies(size_t quantity);
-    void makeRaspberryCookies(size_t quantity);
-    void makeCarmelCookies(size_t quantity);
+    void makeChocolete() {
+        baker_->addChocolate();
+    }
+    void makeHazelnuts() {
+        baker_->addNuts();
+    }
+    void makeChocoleteAndHazelnuts() {
+        baker_->addChocolate();
+        baker_->addNuts();
+    }
+    void makeRaspberry() {
+        baker_->addRaspberries();
+    }
+    void makeCarmel() {
+        baker_->addCarmel();
+    }
     // all ingredients
-    void makeDeluxeCookies(size_t quantity);
-
-    // no ingredients
-    void makePlainCake(size_t floors);
-    void makeChocoleteCake(size_t floors);
-    void makeHazelnutsCake(size_t floors);
-    void makeChocoleteAndHazelnutsCake(size_t floors);
-    void makeRaspberryCake(size_t floors);
-    void makeCarmelCake(size_t floors);
-    // all ingredients
-    void makeDeluxeCake(size_t floors);
+    void makeDeluxe() {
+        baker_->addChocolate();
+        baker_->addNuts();
+        baker_->addRaspberries();
+        baker_->addCarmel();
+    }
 private:
     std::shared_ptr<Baker> baker_;
 };
