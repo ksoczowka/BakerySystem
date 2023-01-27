@@ -4,11 +4,11 @@
 #include "products.hpp"
 
 #include <memory>
+#include <stdexcept>
 
 class Baker {
 public:
     virtual ~Baker(){}
-    virtual void reset() = 0;
     virtual void addChocolate() const = 0;
     virtual void addNuts() const = 0;
     virtual void addRaspberries() const = 0;
@@ -17,38 +17,84 @@ public:
 
 class CookiesBaker : public Baker {
 public: 
-    CookiesBaker();
+    CookiesBaker() {
+        reset();
+    }
     ~CookiesBaker(){}
 
-    void reset() override;
+    void reset() {
+        cookies_ = std::shared_ptr<Cookies>(new Cookies());
+    }
 
-    void setQuantity(size_t quantity);
+    void setQuantity(size_t quantity) {
+        if(quantity == 0) {
+            auto e = std::range_error("Quantity can't be lower that 1!\n");
+            throw(e);
+        } else {
+            cookies_->quantity_ = quantity;
+        }
+    }
 
-    void addChocolate() const override;
-    void addNuts() const override;
-    void addRaspberries() const override;
-    void addCarmel() const override;
+    void addChocolate() const override {
+        cookies_->ingredients_.push_back("Chocolate");
+    }
+    void addNuts() const override {
+        cookies_->ingredients_.push_back("Hazelnuts");
+    }
+    void addRaspberries() const override {
+        cookies_->ingredients_.push_back("Raspberries");
+    }
+    void addCarmel() const override {
+        cookies_->ingredients_.push_back("Carmel");
+    }
 
-    std::shared_ptr<Cookies> getCookies();
+    std::shared_ptr<Cookies> getCookies() {
+        auto result = cookies_;
+        reset();
+        return result;
+    }
 private:
     std::shared_ptr<Cookies> cookies_;
 };
 
 class CakeBaker : public Baker {
 public:
-    CakeBaker();
+    CakeBaker() {
+        reset();
+    }
     ~CakeBaker(){}
 
-    void reset() override;
+    void reset() {
+        cake_ = std::shared_ptr<Cake>(new Cake());
+    }
 
-    void setFloors(size_t floors);
+    void setFloors(size_t floors) {
+        if(floors < 1) {
+            auto e = std::range_error("Floors can't be less that 1!\n");
+            throw(e);
+        } else {
+            cake_->floors_ = floors;
+        }
+    }
     
-    void addChocolate() const override;
-    void addNuts() const override;
-    void addRaspberries() const override;
-    void addCarmel() const override;
+    void addChocolate() const override {
+        cake_->ingredients_.push_back("Chocolate");
+    }
+    void addNuts() const override {
+        cake_->ingredients_.push_back("Hazelnuts");
+    }
+    void addRaspberries() const override {
+        cake_->ingredients_.push_back("Raspberries");
+    }
+    void addCarmel() const override {
+        cake_->ingredients_.push_back("Carmel");
+    }
 
-    std::shared_ptr<Cake> getCake();
+    std::shared_ptr<Cake> getCake() {
+        auto result = cake_;
+        reset();
+        return result;
+    }
 private:
     std::shared_ptr<Cake> cake_;
 };
