@@ -25,6 +25,7 @@ public:
 
     void reset() {
         cookies_ = std::shared_ptr<Cookies>(new Cookies());
+        cookies_->quantity_ = 0;
     }
 
     void setQuantity(size_t quantity) {
@@ -70,6 +71,7 @@ public:
 
     void reset() {
         cake_ = std::shared_ptr<Cake>(new Cake());
+        cake_->floors_ = 0;
     }
 
     void setFloors(size_t floors) {
@@ -88,7 +90,7 @@ public:
         cake_->ingredients_.push_back("Hazelnuts");
     }
     void addRaspberries() const override {
-        cake_->ingredients_.push_back("Raspberries");
+        cake_->ingredients_.push_back("Raspberry");
     }
     void addCarmel() const override {
         cake_->ingredients_.push_back("Carmel");
