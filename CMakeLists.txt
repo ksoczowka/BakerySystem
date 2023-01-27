@@ -14,16 +14,7 @@ set(PRODUCTS_DIR ${SHOP_DIR}/products/)
 set(SHOP_TESTS_DIR ${SHOP_DIR}/tests/)
 set(PRODUCTS_TESTS_DIR ${PRODUCTS_DIR}/tests/)
 
-set(
-  API_CPP_FILES
-  ${SHOP_DIR}/shop.cpp
-)
-
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
-
-add_library(API_LIB SHARED ${API_CPP_FILES})
-
-target_link_libraries(${PROJECT_NAME} ${API_LIB})
 
 # Tests related content below
 include(FetchContent)
@@ -46,7 +37,6 @@ add_executable(${TESTS_EXEC_NAME} ${TESTS})
 
 target_link_libraries(
   ${TESTS_EXEC_NAME}
-  ${API_LIB}
   GTest::gtest_main
 )
 
