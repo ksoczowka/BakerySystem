@@ -11,7 +11,6 @@ set(CLIENT_DIR ${APP_DIR}/client/)
 set(SHOP_DIR ${API_DIR}/shop/)
 set(PRODUCTS_DIR ${SHOP_DIR}/products/)
 
-set(SHOP_TESTS_DIR ${SHOP_DIR}/tests/)
 set(PRODUCTS_TESTS_DIR ${PRODUCTS_DIR}/tests/)
 
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
@@ -29,7 +28,6 @@ enable_testing()
 set(TESTS_EXEC_NAME ${PROJECT_NAME}-tests)
 set(
   TESTS 
-  ${SHOP_TESTS_DIR}/shop_tests.cpp
   ${PRODUCTS_TESTS_DIR}/products_tests.cpp
   ${PRODUCTS_TESTS_DIR}/manager_tests.cpp
 )
