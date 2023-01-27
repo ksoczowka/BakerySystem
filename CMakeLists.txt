@@ -5,7 +5,7 @@ project(SimpleShop)
 
 set(APP_DIR ${CMAKE_SOURCE_DIR}/app/)
 
-set(API_DIR ${APP_DIR}/api/)
+set(API_DIR ${APP_DIR}/BakerySystem/)
 set(CLIENT_DIR ${APP_DIR}/client/)
 
 set(SHOP_DIR ${API_DIR}/shop/)
