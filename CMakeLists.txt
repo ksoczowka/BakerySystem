@@ -17,7 +17,6 @@ set(PRODUCTS_TESTS_DIR ${PRODUCTS_DIR}/tests/)
 set(
   API_CPP_FILES
   ${SHOP_DIR}/shop.cpp
-  ${PRODUCTS_DIR}/bakers.cpp
 )
 
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
