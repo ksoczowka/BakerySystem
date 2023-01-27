@@ -1,11 +1,8 @@
-#pragma once
-
-#include "shop/shop.hpp"
-#include "shop/products/bakers.hpp"
+#ifndef SESSION_HPP_
+#define SESSION_HPP_
 
 #include <memory>
 
-// note: singleton
 class Session {
 public:
     static std::shared_ptr<Session> getInstance();
@@ -27,3 +24,5 @@ std::shared_ptr<Session> Session::getInstance() {
     return instance_;
 }
 
+
+#endif // SESSION_HPP_
