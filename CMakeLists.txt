@@ -40,6 +40,7 @@ set(
   TESTS 
   ${SHOP_TESTS_DIR}/shop_tests.cpp
   ${PRODUCTS_TESTS_DIR}/products_tests.cpp
+  ${PRODUCTS_TESTS_DIR}/manager_tests.cpp
 )
 add_executable(${TESTS_EXEC_NAME} ${TESTS})
 
