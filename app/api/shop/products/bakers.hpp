@@ -4,6 +4,7 @@
 #include "products.hpp"
 
 #include <memory>
+#include <optional>
 #include <stdexcept>
 
 class Baker {
@@ -48,10 +49,13 @@ public:
         cookies_->ingredients_.push_back("Carmel");
     }
 
-    std::shared_ptr<Cookies> getCookies() {
-        auto result = cookies_;
-        reset();
-        return result;
+    std::optional<std::shared_ptr<Cookies>> getCookies() {
+        if(cookies_->quantity_ != 0) {
+            auto result = cookies_;
+            reset();
+            return result;
+        }
+        return std::nullopt;
     }
 private:
     std::shared_ptr<Cookies> cookies_;
@@ -90,10 +94,13 @@ public:
         cake_->ingredients_.push_back("Carmel");
     }
 
-    std::shared_ptr<Cake> getCake() {
-        auto result = cake_;
-        reset();
-        return result;
+    std::optional<std::shared_ptr<Cake>> getCake() {
+        if(cake_->floors_ != 0) {
+            auto result = cake_;
+            reset();
+            return result;
+        }
+        return std::nullopt;
     }
 private:
     std::shared_ptr<Cake> cake_;
