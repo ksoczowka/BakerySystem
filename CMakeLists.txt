@@ -3,21 +3,21 @@ set(CXX_STANDARD_REQUIRED 20)
 
 project(Bakery)
 
-set(APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/app/)
+set(APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/app)
 
-set(API_DIR ${APP_DIR}/BakerySystem/)
-set(CLIENT_DIR ${APP_DIR}/client/)
+set(API_DIR ${APP_DIR}/BakerySystem)
+set(CLIENT_DIR ${APP_DIR}/client)
 
 # shop part
-set(SHOP_DIR ${API_DIR}/shop/)
-set(PRODUCTS_DIR ${SHOP_DIR}/products/)
+set(SHOP_DIR ${API_DIR}/shop)
+set(PRODUCTS_DIR ${SHOP_DIR}/products)
 
-set(PRODUCTS_TESTS_DIR ${PRODUCTS_DIR}/tests/)
+set(PRODUCTS_TESTS_DIR ${PRODUCTS_DIR}/tests)
 
 # login part
-set(LOGIN_DIR ${API_DIR}/login/)
+set(LOGIN_DIR ${API_DIR}/login)
 
-set(LOGIN_TESTS_DIR ${LOGIN_DIR}/tests/)
+set(LOGIN_TESTS_DIR ${LOGIN_DIR}/tests)
 
 file(COPY ${CLIENT_DIR}/db.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
