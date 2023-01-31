@@ -3,11 +3,11 @@ Simple app to simulate bakery!
 
 ## Build instructions:
 Build with </code>buildScript.sh</code>:
-1. <code>./buildScript.sh</code><br>
+- <code>./buildScript.sh</code><br>
 Build with cmake directly:
-1. <code>mkdir build && cd build</code>
-2. <code>cmake ..</code>
-3. <code>make</code>
+- <code>mkdir build && cd build</code>
+- <code>cmake ..</code>
+- <code>make</code>
 
 ## Using:
 Make sure to be in build catalog!<br>
