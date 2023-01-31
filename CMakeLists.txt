@@ -3,7 +3,7 @@ set(CXX_STANDARD_REQUIRED 20)
 
 project(SimpleShop)
 
-set(APP_DIR ${CMAKE_SOURCE_DIR}/app/)
+set(APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/app/)
 
 set(API_DIR ${APP_DIR}/BakerySystem/)
 set(CLIENT_DIR ${APP_DIR}/client/)
@@ -19,6 +19,7 @@ set(LOGIN_DIR ${API_DIR}/login/)
 
 set(LOGIN_TESTS_DIR ${LOGIN_DIR}/tests/)
 
+file(COPY ${LOGIN_DIR}/db.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/db.txt)
 
 # makes exec
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
