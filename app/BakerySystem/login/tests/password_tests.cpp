@@ -26,7 +26,7 @@ TEST_F(PasswordTest, decryptPasswordShouldReturn12345asString) {
     std::string toDecrypt = "49-50-51-52-53/";
 
     std::string expected = "12345";
-    // Checks if EXPECTED value is valid password
+    // Checks if EXPECTED value is a valid password
     ASSERT_TRUE(password->isValidPassword(expected));
 
     EXPECT_EQ(password->decryptPassword(toDecrypt), expected);
