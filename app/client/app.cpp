@@ -16,6 +16,8 @@ int main() {
     for(const auto& ing : cookies->ingredients_) {
         std::cout << "- " << ing << '\n';
     }
+    Password pswd;
+    std::cout << pswd.decryptPassword("49-50-51-52-53/").value_or("error") << '\n';
 
     return 0;
 }
