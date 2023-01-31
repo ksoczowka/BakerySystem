@@ -3,43 +3,41 @@
 
 #include "password.hpp"
 
-#include <fstream>
-#include <map>
 #include <memory>
-#include <optional>
-
 
 class User {
 public:
-    User(const std::string& databasePath) {
-        db_.open(databasePath);
-    }
-    User getUserFromDatabase(const std::string& username, const std::string& password);
+    User();
+    User(const std::string& username, const std::string& password);
+    bool validateUser(const std::string& encryptedPassword);
+
+    void operator=(const User& other);
 private :
-    std::ifstream db_;
     std::shared_ptr<std::string> username_;
     std::shared_ptr<Password> password_;
-
-    std::optional<std::string> getFromFile(const std::string& username);
 };
 
-User User::getUserFromDatabase(const std::string& username, const std::string& password) {
-    *username_ = username;
+User::User() : username_(nullptr), password_(nullptr) {}
+
+User::User(const std::string& username, const std::string& password) {
+    username_ = std::shared_ptr<std::string>(new std::string(username));
     password_ = std::shared_ptr<Password>(new Password(password));
-    auto pswd = getFromFile(username).value_or("");
-    password_->pass(pswd);
 }
 
-std::optional<std::string> User::getFromFile(const std::string& username) {
-    std::string line = "";
-    while(std::getline(db_, line)) {
-        if(line.substr(0, line.find_first_of('@') - 1) == username) {
-            auto pswd = line.substr(line.find_first_of('@') + 1, line.size() - (line.find_first_of('@') + 1));
-            return pswd;
-        }
+void User::operator=(const User& other) {
+    username_ = other.username_;
+    password_ = other.password_;
+}
+
+bool User::validateUser(const std::string& encryptedPassword) {
+    if(username_ == nullptr || password_ == nullptr) {
+        return false;
     }
-    return std::nullopt;
+    auto decrypted = password_->decryptPassword(encryptedPassword);
+    if(decrypted == password_->getPassword()) {
+        return true;
+    }
+    return false;
 }
-
 
 #endif // LOGIN_HPP_

@@ -11,7 +11,7 @@ public:
     Password() {}
     Password(const std::string& decrypted) : password_(decrypted) {}
 
-    bool pass(const std::string& encrypted);
+    std::string getPassword() { return password_; }
 
     bool isValidPassword(const std::string& password);
     std::optional<std::string> decryptPassword(const std::string& password);
@@ -22,11 +22,6 @@ private:
 
     std::array<short, size_> encryptedToAsciiCodes(const std::string& password);
 };
-
-bool Password::pass(const std::string& encrypted) {
-    auto decrypted = decryptPassword(encrypted).value_or("");
-    return (decrypted == password_);
-}
 
 bool Password::isValidPassword(const std::string& password) {
     if(password.size() != size_) {

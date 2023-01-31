@@ -19,7 +19,7 @@ set(LOGIN_DIR ${API_DIR}/login/)
 
 set(LOGIN_TESTS_DIR ${LOGIN_DIR}/tests/)
 
-file(COPY ${LOGIN_DIR}/db.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/db.txt)
+file(COPY ${LOGIN_DIR}/db.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 # makes exec
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
