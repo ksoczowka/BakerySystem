@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 set(CXX_STANDARD_REQUIRED 20)
 
-project(SimpleShop)
+project(Bakery)
 
 set(APP_DIR ${CMAKE_CURRENT_SOURCE_DIR}/app/)
 
