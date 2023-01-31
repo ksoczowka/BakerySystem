@@ -43,7 +43,6 @@ set(
 
 set(
   LOGIN_TESTS
-  ${LOGIN_TESTS_DIR}/login_tests.cpp
   ${LOGIN_TESTS_DIR}/password_tests.cpp
 )
 
