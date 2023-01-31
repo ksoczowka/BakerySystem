@@ -22,6 +22,7 @@ set(LOGIN_TESTS_DIR ${LOGIN_DIR}/tests/)
 
 # makes exec
 add_executable(${PROJECT_NAME} ${CLIENT_DIR}/app.cpp)
+target_link_libraries(${PROJECT_NAME})
 
 # Tests related content below
 include(FetchContent)
@@ -43,6 +44,7 @@ set(
 set(
   LOGIN_TESTS
   ${LOGIN_TESTS_DIR}/login_tests.cpp
+  ${LOGIN_TESTS_DIR}/password_tests.cpp
 )
 
 set(
